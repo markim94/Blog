@@ -10,7 +10,7 @@ import com.swedio.openapiproject.databinding.ActivityMainBinding
 import com.swedio.openapiproject.main.adapter.CyListAdapter
 import com.swedio.openapiproject.network.RetrofitClient
 import com.swedio.openapiproject.network.responseDTO.AptLttotPblancDetailDTO
-import com.swedio.openapiproject.network.responseDTO.CyApiService
+import com.swedio.openapiproject.network.CyApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun requestAptCyList() {
         val cyListService = RetrofitClient.getInstance().create(CyApiService::class.java)
         val listCall = cyListService.getAPTLttotPblancDetail()
+
         listCall.enqueue(object : Callback<AptLttotPblancDetailDTO> {
             override fun onResponse(
                 call: Call<AptLttotPblancDetailDTO>,
@@ -55,8 +56,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful && response.code() == 200) {
                     cyListAdapter?.let {
-                        it.cyListItemList = response.body()?.data ?: mutableListOf()
-                        it.notifyDataSetChanged()
+                        it.setAptListItem(response.body()?.data ?: mutableListOf())
                     }
 
                 } // end if
