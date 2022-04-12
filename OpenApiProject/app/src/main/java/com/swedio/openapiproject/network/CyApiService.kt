@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface CyApiService {
 
     companion object {
-        private const val authKey = "할당받은 서비스 키"
+        private const val authKey = "발급받은 서비스 키"
 
     }
 
