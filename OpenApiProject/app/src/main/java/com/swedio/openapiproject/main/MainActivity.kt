@@ -2,6 +2,7 @@ package com.swedio.openapiproject.main
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -58,12 +59,15 @@ class MainActivity : AppCompatActivity() {
                         it.setAptListItem(response.body()?.data ?: mutableListOf())
                     }
 
-                } // end if
+                } else {
+                    Toast.makeText(this@MainActivity, "response Code : " + response.code() + "\n발급받은 서비스 키를 새로이 입력하세요.", Toast.LENGTH_SHORT).show()
+
+                }
             }
 
             override fun onFailure(call: Call<AptLttotPblancDetailDTO>, t: Throwable) {
                 // 실패
-                Log.e("main_error", t.stackTrace.toString());
+                Log.e("onFail", t.stackTrace.toString());
 
             }
 

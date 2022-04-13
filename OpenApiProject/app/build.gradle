@@ -55,8 +55,8 @@ dependencies {
     /**
      * retrofit 네트워크 라이브러리 관련
      */
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 
 
 }
