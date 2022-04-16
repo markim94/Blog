@@ -1,10 +1,13 @@
 package com.swedio.bindingadapter.utils
 
+import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.adapters.TextViewBindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.swedio.bindingadapter.R
@@ -17,7 +20,7 @@ object BindingAdapterUtils {
      * : imageUrl, error 2개 값이 모두 할당되어야 사용한다. (requireAll = true)
      */
     @JvmStatic
-    @BindingAdapter("imageUrl", "error")
+    @BindingAdapter("binding:imageUrl", "binding:error")
     fun loadImage(imageView: ImageView, imageUrl: String, errorDrawable: Drawable) {
         Glide.with(imageView).load(imageUrl).error(errorDrawable).into(imageView)
 
@@ -28,7 +31,7 @@ object BindingAdapterUtils {
      * : imageUrl, error 2개 값 중에 1개 값이라도 들어온다면 사용된다. (requireAll = false)
      */
     @JvmStatic
-    @BindingAdapter(value = ["imageUrl", "placeHolder"], requireAll = false)
+    @BindingAdapter(value = ["binding:imageUrl", "binding:placeHolder"], requireAll = false)
     fun loadImageRequireNonAll(imageView: ImageView, imageUrl: String?, placeHolder: Drawable?) {
         if (imageUrl == null) {
             // 이미지 url이 없다. placeHolder만 들어왔다.
@@ -42,26 +45,25 @@ object BindingAdapterUtils {
 
     }
 
-
     /**
      * (맞춤 로직 예제 사용)
-     * 좌측 패딩값 설정
+     * 텍스트 색상 분기 처리
      */
     @JvmStatic
-    @BindingAdapter("android:paddingLeft")
-    fun setPaddingLeft(view: View, padding: Int) {
-        view.setPadding(padding, view.paddingTop, view.paddingRight, view.paddingBottom)
-    }
+    @BindingAdapter("binding:effect_text")
+    fun setEffectText(view: TextView, txt: String?) {
+        val txt = txt ?: return
 
-    /**
-     * (맞춤 로직 예제 사용2)
-     * 힌트 텍스트 사이즈 작게 설정
-     */
-    @JvmStatic
-    @BindingAdapter("purple_text")
-    fun setPurpleText(view: TextView, txt: String) {
+        if (txt.startsWith("a")) {
+            view.setTextColor(view.context.getColor(R.color.purple_700))
+
+        } else {
+            view.setTextColor(view.context.getColor(R.color.teal_700))
+
+        } // end if
+
         view.text = txt
-        view.setTextColor(view.context.getColor(R.color.purple_700))
+
     }
 
 
@@ -69,6 +71,15 @@ object BindingAdapterUtils {
     @BindingAdapter("bind_list")
     fun setBindList(recyclerView: RecyclerView, data: MutableList<Document>) {
         // TODO
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("android:onTextChanged")
+    fun onTxtChanged(view: EditText, charSequence: CharSequence) {
+        view.editableText
+
+
     }
 
 
