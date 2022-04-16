@@ -19,12 +19,17 @@ object BindingAdapterUtils {
      * glide 라이브러리를 이용한 맞춤 메소드 설정
      * : imageUrl, error 2개 값이 모두 할당되어야 사용한다. (requireAll = true)
      */
-    @JvmStatic
-    @BindingAdapter("binding:imageUrl", "binding:error")
-    fun loadImage(imageView: ImageView, imageUrl: String, errorDrawable: Drawable) {
-        Glide.with(imageView).load(imageUrl).error(errorDrawable).into(imageView)
-
-    }
+//    @JvmStatic
+//    @BindingAdapter("binding:imageUrl", "binding:error")
+//    fun loadImage(imageView: ImageView, imageUrl: String?, errorDrawable: Drawable?) {
+//        if (imageUrl == null) {
+//            return
+//
+//        } // end if
+//
+//        Glide.with(imageView).load(imageUrl).error(errorDrawable).into(imageView)
+//
+//    }
 
     /**
      * glide 라이브러리를 이용한 맞춤 메소드 설정

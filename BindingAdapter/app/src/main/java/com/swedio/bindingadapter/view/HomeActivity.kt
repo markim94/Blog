@@ -22,5 +22,10 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
+        binding.btn2.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, SecondActivity::class.java))
+
+        }
+
     }
 }
