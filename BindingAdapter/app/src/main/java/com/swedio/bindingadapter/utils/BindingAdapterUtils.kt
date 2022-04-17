@@ -1,17 +1,14 @@
 package com.swedio.bindingadapter.utils
 
-import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.databinding.adapters.TextViewBindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.swedio.bindingadapter.R
-import org.w3c.dom.Document
+import com.swedio.bindingadapter.adapter.CyListAdapter
+import com.swedio.openapiproject.network.responseDTO.AptItem
 
 object BindingAdapterUtils {
 
@@ -19,17 +16,17 @@ object BindingAdapterUtils {
      * glide 라이브러리를 이용한 맞춤 메소드 설정
      * : imageUrl, error 2개 값이 모두 할당되어야 사용한다. (requireAll = true)
      */
-//    @JvmStatic
-//    @BindingAdapter("binding:imageUrl", "binding:error")
-//    fun loadImage(imageView: ImageView, imageUrl: String?, errorDrawable: Drawable?) {
-//        if (imageUrl == null) {
-//            return
-//
-//        } // end if
-//
-//        Glide.with(imageView).load(imageUrl).error(errorDrawable).into(imageView)
-//
-//    }
+    @JvmStatic
+    @BindingAdapter("binding:imageUrl", "binding:error")
+    fun loadImage(imageView: ImageView, imageUrl: String?, errorDrawable: Drawable?) {
+        if (imageUrl == null) {
+            return
+
+        } // end if
+
+        Glide.with(imageView).load(imageUrl).error(errorDrawable).into(imageView)
+
+    }
 
     /**
      * glide 라이브러리를 이용한 맞춤 메소드 설정
@@ -71,23 +68,15 @@ object BindingAdapterUtils {
 
     }
 
-
     @JvmStatic
-    @BindingAdapter("bind_list")
-    fun setBindList(recyclerView: RecyclerView, data: MutableList<Document>) {
-        // TODO
-    }
+    @BindingAdapter("binding:bind_list")
+    fun setBindList(recyclerView: RecyclerView, list: MutableList<AptItem>?) {
+        val cyList = list ?: return
+        val cyListAdapter = recyclerView.adapter as? CyListAdapter ?: return
 
-
-    @JvmStatic
-    @BindingAdapter("android:onTextChanged")
-    fun onTxtChanged(view: EditText, charSequence: CharSequence) {
-        view.editableText
-
+        cyListAdapter.setAptListItem(cyList)
 
     }
-
-
 
 
 }

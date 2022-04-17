@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.swedio.bindingadapter">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -26,12 +26,19 @@
             </intent-filter>
         </activity>
 
+        <!-- 텍스트 효과 예제 -->
         <activity
             android:name=".view.FirstActivity"
             android:exported="true" />
 
+        <!-- glide 이미지 로드 예제 -->
         <activity
             android:name=".view.SecondActivity"
+            android:exported="false" />
+
+        <!-- RecyclerView 바인딩 예제 -->
+        <activity
+            android:name=".view.ThirdActivity"
             android:exported="false" />
 
     </application>

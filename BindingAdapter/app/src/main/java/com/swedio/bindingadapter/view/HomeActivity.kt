@@ -27,5 +27,10 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
+        binding.btn3.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, ThirdActivity::class.java))
+
+        }
+
     }
 }

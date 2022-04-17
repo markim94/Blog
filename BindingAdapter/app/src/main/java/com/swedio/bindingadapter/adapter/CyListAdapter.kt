@@ -1,11 +1,11 @@
-package com.swedio.openapiproject.main.adapter
+package com.swedio.bindingadapter.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.swedio.openapiproject.R
-import com.swedio.openapiproject.databinding.ViewCyListItemBinding
+import com.swedio.bindingadapter.R
+import com.swedio.bindingadapter.databinding.ViewCyListItemBinding
 import com.swedio.openapiproject.network.responseDTO.AptItem
 
 class CyListAdapter : RecyclerView.Adapter<CyListAdapter.CyListViewHolder>() {
