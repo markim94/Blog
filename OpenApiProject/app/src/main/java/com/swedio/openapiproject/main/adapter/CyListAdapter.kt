@@ -3,6 +3,7 @@ package com.swedio.openapiproject.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.swedio.openapiproject.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.swedio.openapiproject.R
 import com.swedio.openapiproject.databinding.ViewCyListItemBinding
@@ -19,11 +20,7 @@ class CyListAdapter : RecyclerView.Adapter<CyListAdapter.CyListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CyListViewHolder, position: Int) {
-        val cyListItem = cyListItemList[position]
-
-        binding.tvHouseManageNo.text = cyListItem.houseManageNo.toString()
-        binding.tvHouseNm.text = cyListItem.houseNm ?: ""
-        binding.tvHouseAddr.text = cyListItem.houseAddr ?: ""
+        holder.bind(cyListItemList[position])
 
     }
 
@@ -37,6 +34,10 @@ class CyListAdapter : RecyclerView.Adapter<CyListAdapter.CyListViewHolder>() {
     }
 
     inner class CyListViewHolder(binding: ViewCyListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: AptItem) {
+            binding.setVariable(BR.aptItem, data)
+            binding.executePendingBindings()
+        }
 
     }
 
