@@ -1,14 +1,13 @@
 package com.swedio.bindingadapter.viewmodel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.swedio.openapiproject.network.CyApiService
 import com.swedio.openapiproject.network.RetrofitClient
-import com.swedio.openapiproject.network.responseDTO.AptItem
-import com.swedio.openapiproject.network.responseDTO.AptLttotPblancDetailDTO
+import com.swedio.bindingadapter.network.responseDTO.AptItem
+import com.swedio.bindingadapter.network.responseDTO.AptLttotPblancDetailDTO
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

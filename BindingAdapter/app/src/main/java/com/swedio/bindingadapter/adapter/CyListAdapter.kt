@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.swedio.bindingadapter.R
 import com.swedio.bindingadapter.databinding.ViewCyListItemBinding
-import com.swedio.openapiproject.network.responseDTO.AptItem
+import com.swedio.bindingadapter.network.responseDTO.AptItem
 
 class CyListAdapter : RecyclerView.Adapter<CyListAdapter.CyListViewHolder>() {
     private lateinit var binding: ViewCyListItemBinding
@@ -19,17 +19,12 @@ class CyListAdapter : RecyclerView.Adapter<CyListAdapter.CyListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CyListViewHolder, position: Int) {
-        val cyListItem = cyListItemList[position]
-
-        binding.tvHouseManageNo.text = cyListItem.houseManageNo.toString()
-        binding.tvHouseNm.text = cyListItem.houseNm ?: ""
-        binding.tvHouseAddr.text = cyListItem.houseAddr ?: ""
+        holder.bind(cyListItemList[position])
 
     }
 
     fun setAptListItem(cyList: MutableList<AptItem>) {
         this.cyListItemList = cyList
-        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +32,9 @@ class CyListAdapter : RecyclerView.Adapter<CyListAdapter.CyListViewHolder>() {
     }
 
     inner class CyListViewHolder(binding: ViewCyListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: AptItem) {
+            binding.aptItem = data
+        }
 
     }
 

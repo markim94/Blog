@@ -1,6 +1,6 @@
 package com.swedio.openapiproject.network
 
-import com.swedio.openapiproject.network.responseDTO.AptLttotPblancDetailDTO
+import com.swedio.bindingadapter.network.responseDTO.AptLttotPblancDetailDTO
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

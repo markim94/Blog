@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.swedio.bindingadapter.R
 import com.swedio.bindingadapter.adapter.CyListAdapter
-import com.swedio.openapiproject.network.responseDTO.AptItem
+import com.swedio.bindingadapter.network.responseDTO.AptItem
 
 object BindingAdapterUtils {
 
@@ -74,7 +74,10 @@ object BindingAdapterUtils {
         val cyList = list ?: return
         val cyListAdapter = recyclerView.adapter as? CyListAdapter ?: return
 
-        cyListAdapter.setAptListItem(cyList)
+        cyListAdapter.let {
+            it.setAptListItem(cyList)
+            it.notifyDataSetChanged()
+        }
 
     }
 

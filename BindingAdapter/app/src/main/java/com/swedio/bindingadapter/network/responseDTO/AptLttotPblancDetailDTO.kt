@@ -1,4 +1,4 @@
-package com.swedio.openapiproject.network.responseDTO
+package com.swedio.bindingadapter.network.responseDTO
 
 import com.google.gson.annotations.SerializedName
 
