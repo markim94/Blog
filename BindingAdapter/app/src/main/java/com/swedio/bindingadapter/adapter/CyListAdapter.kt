@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.swedio.bindingadapter.BR
 import com.swedio.bindingadapter.R
 import com.swedio.bindingadapter.databinding.ViewCyListItemBinding
 import com.swedio.bindingadapter.network.responseDTO.AptItem
@@ -33,7 +34,8 @@ class CyListAdapter : RecyclerView.Adapter<CyListAdapter.CyListViewHolder>() {
 
     inner class CyListViewHolder(binding: ViewCyListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: AptItem) {
-            binding.aptItem = data
+            binding.setVariable(BR.aptItem, data)
+            binding.executePendingBindings()
         }
 
     }
