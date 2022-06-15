@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.swedio.mvvm.R
 import com.swedio.mvvm.databinding.ActivityMainBinding
 import com.swedio.mvvm.main.viewModel.MainViewModel
@@ -30,7 +31,7 @@ import com.swedio.mvvm.main.viewModel.MainViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProvider(this, MainViewModel.Factory(application)).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,5 +41,15 @@ class MainActivity : AppCompatActivity() {
             lifecycleOwner = this@MainActivity
         }
 
+        initView()
+
+    }
+
+    private fun initView() {
+        binding.rvCyList.apply {
+            adapter = CyListAdapter()
+            layoutManager = LinearLayoutManager(this@MainActivity)
+
+        }
     }
 }

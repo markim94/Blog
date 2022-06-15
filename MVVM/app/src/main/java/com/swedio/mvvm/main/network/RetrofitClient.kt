@@ -20,4 +20,6 @@ object RetrofitClient {
         return instance!!
     }
 
+    val api: CyApiService by lazy { getInstance().create(CyApiService::class.java) }
+
 }
